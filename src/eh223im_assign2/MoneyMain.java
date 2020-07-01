@@ -33,6 +33,7 @@ public class MoneyMain {
         Money d = money2.minus(money1);
         System.out.println(d.toString());
 
-        System.out.print("Money 3 is: ");
+        Money e = new Money(4,-101);
+        System.out.print("Money 3 is: "+e.toString());
     }
 }

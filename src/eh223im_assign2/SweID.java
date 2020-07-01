@@ -12,8 +12,7 @@ public class SweID {
     // I have done this one before
     // Algorithm remains similar.
     // Here is the source, for citation, because of academic rules:
-    // https://github.com/My2ndAngelic/1DV506/blob/eb7242b9b0222179908b750116370037dae3f16d/src/main/java/eh223im_assign3/SweID.java
-    // This is more consistent than those block comments.
+    // https://raw.githubusercontent.com/My2ndAngelic/1DV506/master/src/main/java/eh223im_assign3/SweID.java
 
     // Here is the proper citation for the code, just in case.
     /**
@@ -22,7 +21,7 @@ public class SweID {
      * Title of program/source code: SweID
      * Code version: N/A
      * Type: computer program
-     * Web address or publisher (e.g. program publisher, URL): https://github.com/My2ndAngelic/1DV506/blob/eb7242b9b0222179908b750116370037dae3f16d/src/main/java/backup/eh223im_assign3/SweID.java
+     * Web address: https://raw.githubusercontent.com/My2ndAngelic/1DV506/master/src/main/java/eh223im_assign3/SweID.java
      */
 
     /**

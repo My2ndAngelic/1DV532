@@ -18,7 +18,6 @@ public class Pizza {
     // Constructor
     public Pizza(String size, String type, int topping) {
         this.size = size;
-
         switch (type.toLowerCase()) {
             case "cheese":
                 this.cheese = topping;
