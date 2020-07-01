@@ -82,7 +82,7 @@ public class Money {
     }
 
     /**
-     * Export dollar, with delimiter
+     * Export dollar, with delimiter choice
      * @param delimiter
      * @return
      */
@@ -94,6 +94,10 @@ public class Money {
         }
     }
 
+    /**
+     * Export dollar, with delimiter as ','
+     * @return
+     */
     public String toString() {
         String delimiter = ",";
         if (dollar >= 0) {

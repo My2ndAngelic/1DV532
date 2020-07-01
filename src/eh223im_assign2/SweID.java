@@ -30,7 +30,7 @@ public class SweID {
      * @param sweID
      * @return first part of the ID
      */
-    static String getFirstPart(String sweID) {
+    private static String getFirstPart(String sweID) {
         return sweID.substring(0,6);
     }
 
@@ -39,7 +39,7 @@ public class SweID {
      * @param sweID
      * @return second part of the ID
      */
-    static String getSecondPart(String sweID) {
+    private static String getSecondPart(String sweID) {
         return sweID.substring(7,11);
     }
 
@@ -48,18 +48,18 @@ public class SweID {
      * @param sweID
      * @return true if female
      */
-    static boolean isFemaleNumber(String sweID) {
+    private static boolean isFemaleNumber(String sweID) {
         int a = Integer.parseInt(sweID.substring(9,10));
         return a%2==0; //first digit in second part is even
     }
 
     // Written in 2020. Return year in 2 digit or 4 digits.
-    static int getYear(String sweID, int n) {
+    private static int getYear(String sweID, int n) {
         int a = Integer.parseInt(sweID.substring(0,2));
         if (n==2) { // Return only year in 2 digits
             return a;
         } else if (n==4) { // Return year in 4 digits
-            if (a > 30) { // No one is born in 2030, yet
+            if (a >= 30) { // No one is born in 2030, yet
                 a += 1900;
             } else { // From 2000-2029
                 a += 2000;
@@ -73,7 +73,7 @@ public class SweID {
      * @param sweID
      * @return
      */
-    static int getMonth(String sweID) {
+    private static int getMonth(String sweID) {
         return Integer.parseInt(sweID.substring(2,4));
     }
 
@@ -82,7 +82,7 @@ public class SweID {
      * @param sweID
      * @return
      */
-    static int getDay(String sweID) {
+    private static int getDay(String sweID) {
         return Integer.parseInt(sweID.substring(4,6));
     }
 
@@ -91,7 +91,7 @@ public class SweID {
      * @param sweID
      * @return true if getMonth() returns 1 - 12
      */
-    static boolean isValidMonth(String sweID) {
+    private static boolean isValidMonth(String sweID) {
         return getMonth(sweID) >= 1 && getMonth(sweID) <= 12;
     }
 
@@ -100,7 +100,7 @@ public class SweID {
      * @param sweID
      * @return true if getYear return a leap year.
      */
-    static boolean isLeap(String sweID) {
+    private static boolean isLeap(String sweID) {
         int year = getYear(sweID,4);
         return year % 4 == 0 && (year % 100 == 0 && year % 400 == 0); // Standard leap year algorithm. Those year if divides 4, and if divides by 100 it should not divides 400.
     }
@@ -111,123 +111,39 @@ public class SweID {
      * @param sweID
      * @return true if it is valid
      */
-    static boolean isValidDate(String sweID) {
+    private static boolean isValidDate(String sweID) {
         int month = getMonth(sweID);
         int day = getDay(sweID);
         boolean leap = isLeap(sweID);
-        int min = 0; int max = 0;
+        int min = 1; int max;
 
-        // Switching max and min for the day in the month.
-        if (leap) { // in case of leap
-            switch (month) {
-                case 1:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 2:
-                    min = 1;
+        switch (month) { // Switching max and min for the day in the month.
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                max = 31;
+                break;
+            case 2:
+                if (leap) {
                     max = 29;
-                    break;
-                case 3:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 4:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 5:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 6:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 7:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 8:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 9:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 10:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 11:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 12:
-                    min = 1;
-                    max = 31;
-                    break;
-                default:
-                    min = -1;
-                    max = -1;
-                    break;
-            }
-        } else { // In case of not leap
-            switch (month) {
-                case 1:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 2:
-                    min = 1;
+                } else {
                     max = 28;
-                    break;
-                case 3:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 4:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 5:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 6:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 7:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 8:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 9:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 10:
-                    min = 1;
-                    max = 31;
-                    break;
-                case 11:
-                    min = 1;
-                    max = 30;
-                    break;
-                case 12:
-                    min = 1;
-                    max = 31;
-                    break;
-                default:
-                    min = -1;
-                    max = -1;
-                    break;
-            }
+                }
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                max = 30;
+                break;
+            default:
+                min = -1;
+                max = -1;
+                break;
         }
 
         // Check starts here
@@ -236,8 +152,7 @@ public class SweID {
             if ((day >= min) && (day <= max)) { // Check for days in the month
                 check = true;
             }
-        } else check = false;
-
+        }
         return check;
     }
 
@@ -246,22 +161,22 @@ public class SweID {
      * @param sweID
      * @return checksum value
      */
-    static int getChecksum(String sweID) {
-        int check = 0, com = 0;
+    private static int getChecksum(String sweID) {
+        int a, b = 0;
         String sweID2=sweID.substring(0,6) + sweID.substring(7,10);
         for (int i = 0; i < sweID2.length(); i++) { // multiplication pattern: 21212-121
-            int i1 = Integer.parseInt(sweID2.substring(i, i + 1));
+            int i1 = Integer.parseInt(sweID2.substring(i,i+1));
             if (i % 2 == 0) { // Even place multiply by 2 (java counts from 0), then sum the digit. Max: 2*9=18, 1+8=9
-                check = i1 * 2;
-                check = check/10 + check%10;
+                a = i1 * 2;
+                a = a/10 + a%10;
             } else { // Just return the current digit
-                check = i1;
+                a = i1;
             }
-            com+=check; // Add them to the sum
+            b+=a; // Add them to the sum
         }
-        com = (10 - (com % 10)) % 10;  // (10 - lastdigt) of the sum and get the last digit of the result.
+        b = (10 - (b % 10)) % 10;  // (10 - lastdigt) of the sum and get the last digit of the result.
 
-        return com;
+        return b;
     }
 
     /**
@@ -269,7 +184,7 @@ public class SweID {
      * @param sweID
      * @return if checksum in getChecksum and in ID are the same.
      */
-    static boolean isValidChecksum(String sweID) {
+    private static boolean isValidChecksum(String sweID) {
         return getChecksum(sweID) == Integer.parseInt(sweID.substring(10,11));
     }
 
@@ -305,8 +220,8 @@ public class SweID {
     }
 
     /**
-     * ID generator without parameters, for testing purpose only
-     * @return a valid ID
+     * ID generator without parameters, for testing purpose only.
+     * @return a valid ID, YYMMDD-XXXX
      */
     private static String genID() {
         StringBuilder str;
@@ -360,22 +275,43 @@ public class SweID {
         return a.toString();
     }
 
-    private static String inputHandling(String sweID) {
-        if (sweID.indexOf("-") > 6) {
-            System.out.println("Hello");
-        }
-        if (!sweID.contains("-")) {
-            System.out.println("Hi");
-        }
-        return "";
+    /**
+     * Convert inputs to correct form, supports [4Y/2Y]MMDD(-)XXXX
+     * @param sweID
+     * @return a string in the form of YYMMDD-XXXX
+     */
+    private static String inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly(String sweID) {
+        StringBuilder a = new StringBuilder();
+        boolean b = sweID.length() >= 10;
+        boolean c = sweID.contains("-");
+        boolean d = sweID.indexOf("19") == 0 || sweID.indexOf("20") == 0;
+        if (b) { // Check correct length, maybe???
+            if (c) { // if there is a dash
+                if (d) { // YYYYMMDD-XXXX
+                    a.append(sweID, 2, sweID.length());
+                } else { // YYMMDD-XXXX
+                    a.append(sweID);
+                }
+            } else { // if there is no dash
+                if (d) { // YYYYMMDDXXXX
+                    a.append(sweID, 2, 8);
+                    a.append("-");
+                    a.append(sweID, 8, sweID.length());
+                } else { // YYMMDDXXXX
+                    a.append(sweID, 0, 6);
+                    a.append("-");
+                    a.append(sweID, 6, sweID.length());
+                }
+            }
+        } // no outside else
+        return a.toString(); // return everything if it can process, otherwise nothing
     }
 
     // Finally
     public static void main(String[] args) {
-        inputHandling("196401238826");
-        System.out.println(IDVerificationWithInformationToString("640123-8826"));
-        System.out.println(IDVerificationWithInformationToString("550414-0913"));
-        System.out.println(IDVerificationWithInformationToString("551314-0913"));
-        System.out.println(IDVerificationWithInformationToString("550414-0912"));
+        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("19640123-8826"))); // 12 digits with dash
+        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("195504140913"))); // 12 digits without dash
+        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("551314-0913"))); // 10 digit with dash
+        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("5504140912"))); // 10 digit without dash
     }
 }
