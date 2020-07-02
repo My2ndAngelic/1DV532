@@ -1,6 +1,5 @@
 package eh223im_assign3;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class Dices {

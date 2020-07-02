@@ -40,7 +40,7 @@ public class Numbers {
 
         System.out.println(o1);
         System.out.println(o2);
-        
+
         s.close();
         fis.close();
         pw.close();
