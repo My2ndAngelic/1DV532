@@ -7,7 +7,8 @@ import java.util.Scanner;
 public class Names {
     public static void main(String[] args) throws Exception {
         // Idea for getting the current working directory: https://stackoverflow.com/questions/4871051/how-to-get-the-current-working-directory-in-java
-        FileInputStream fisB = new FileInputStream(System.getProperty("user.dir")+"/src/eh223im_assign3"+"/boynames.txt");
+        String dir = System.getProperty("user.dir")+"/src/eh223im_assign3";
+        FileInputStream fisB = new FileInputStream(dir+"/boynames.txt");
         Scanner sB = new Scanner(fisB);
         Object[][] a = new Object[0][2];
         while (sB.hasNext()) {
@@ -18,7 +19,7 @@ public class Names {
             a[a.length-1][1] = sB.nextInt();
         }
 
-        FileInputStream fisG = new FileInputStream(System.getProperty("user.dir")+"/src/eh223im_assign3"+"/girlnames.txt");
+        FileInputStream fisG = new FileInputStream(dir+"/girlnames.txt");
         Scanner sG = new Scanner(fisG);
         Object[][] c = new Object[0][2];
         while (sG.hasNext()) {

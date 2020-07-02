@@ -3,7 +3,6 @@ package eh223im_assign3;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Numbers {
