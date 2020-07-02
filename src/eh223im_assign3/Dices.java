@@ -19,7 +19,6 @@ public class Dices {
             b[a3 - 2][1] += 1;
         }
 
-        System.out.println(Arrays.deepToString(b));
         for (int i = 0; i<b.length;i++) {
             System.out.println(b[i][0]+"\t"+b[i][1]);
         }
