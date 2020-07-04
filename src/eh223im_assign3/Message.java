@@ -15,7 +15,7 @@ public class Message {
         return text;
     }
 
-    public String encode() {
+    public String encode(String text) {
         StringBuilder sb = new StringBuilder();
         char[] temp1 = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         char[] temp2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
