@@ -36,7 +36,7 @@ public class Names {
 
         String[] a0 = new String[a.length];
         for (int i = 0; i< a0.length; i++) {
-            a0[i] = Objects.toString(a[i][0]);
+            a0[i] = Objects.toString(a[i][0]).toLowerCase();
         }
         int[] a1 = new int[a.length];
         for (int i = 0; i< a1.length; i++) {
@@ -44,7 +44,7 @@ public class Names {
         }
         String[] c0 = new String[c.length];
         for (int i = 0; i< c0.length; i++) {
-            c0[i] = Objects.toString(c[i][0]);
+            c0[i] = Objects.toString(c[i][0]).toLowerCase();
         }
         int[] c1 = new int[c.length];
         for (int i = 0; i< c1.length; i++) {
@@ -54,6 +54,7 @@ public class Names {
         Scanner s = new Scanner(System.in);
         System.out.print("Enter name: ");
         String ss = s.next();
+        ss=ss.toLowerCase();
         int rB = -1;
         int rG = -1;
         for (int i = 0; i<a0.length; i++) {
@@ -66,10 +67,11 @@ public class Names {
                 rG = i+1;
             }
         }
+        ss=ss.substring(0,1).toUpperCase()+ss.substring(1).toLowerCase();
         if (rB == -1) {
             System.out.println(ss + " is not ranked among the top 1000 boy names.");
         } else {
-            System.out.println(ss + " is ranked "+rB+" in popularity among boys with "+c1[rB]+" naming.");
+            System.out.println(ss + " is ranked "+rB+" in popularity among boys with "+a1[rB]+" naming.");
         }
         if (rG == -1) {
             System.out.println(ss + " is not ranked among the top 1000 girl names.");
