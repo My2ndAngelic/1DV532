@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Numbers {
     public static void main(String[] args) throws Exception {
-        String dir = System.getProperty("user.dir")+"/src/eh223im_assign3";
+        System.out.print("Enter directory path in which number.txt is located and analysis.txt is going to be written: ");
+        String dir = new Scanner(System.in).next();
         FileInputStream fis = new FileInputStream(dir+"/numbers.txt");
         Scanner s = new Scanner(fis);
         int[] a = new int[0];

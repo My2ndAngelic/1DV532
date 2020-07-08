@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Names {
     public static void main(String[] args) throws Exception {
-        // Idea for getting the current working directory: https://stackoverflow.com/questions/4871051/how-to-get-the-current-working-directory-in-java
-        String dir = System.getProperty("user.dir")+"/src/eh223im_assign3";
+        System.out.print("Enter directory path in which boynames.txt and girlnames.txt are located: ");
+        String dir = new Scanner(System.in).next();
         FileInputStream fisB = new FileInputStream(dir+"/boynames.txt");
         Scanner sB = new Scanner(fisB);
         Object[][] a = new Object[0][2];
