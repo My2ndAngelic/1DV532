@@ -34,6 +34,7 @@ public class Numbers {
         for (int i = 0; i < a.length; i++) {
             e += Math.pow((a[i] - d),2);
         }
+        e /= (a.length);
         e = Math.sqrt(e);
         String o2 = "Standard deviation: "+e;
         pw.println(o2);
