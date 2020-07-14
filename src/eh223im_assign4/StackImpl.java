@@ -8,7 +8,7 @@ public class StackImpl implements Stack {
     /**
      * Author(s) name: My2ndAngelic
      * Date: 2017 Dec
-     * Title of program/source code: Stack
+     * Title of program/source code: StackUtils
      * Code version: N/A
      * Type: computer program
      * Web address: https://github.com/My2ndAngelic/1DV506/blob/master/src/main/java/eh223im_assign4/stack/StackUtils.java

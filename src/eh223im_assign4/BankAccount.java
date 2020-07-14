@@ -46,6 +46,7 @@ public class BankAccount {
         System.out.println("ID: "+a+" | Account no: "+b+" | Balance: "+c);
     }
 
+    // For exercise 2 only
     private String str;
     BankAccount(String str) {
         this.str = str;
