@@ -1,9 +1,7 @@
 package eh223im_assign4.polygons;
 
-import java.util.Arrays;
-
 public class RegularPolygonMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         RegularPolygon a = new EquilateralTriangle(5);
         System.out.println("Triangle");
         System.out.println("Number of sides: "+a.getNumSides());

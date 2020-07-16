@@ -1,10 +1,14 @@
 package eh223im_assign4.polygons;
 
+import java.util.InputMismatchException;
+
 public class Square implements RegularPolygon {
-    private final int sideLength;
+    private int sideLength;
 
     public Square(int sideLength) {
-        this.sideLength = sideLength;
+        if (sideLength > 0) {
+            this.sideLength = sideLength;
+        } else throw new InputMismatchException("Invalid side length.");
     }
 
     @Override
