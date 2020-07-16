@@ -48,7 +48,7 @@ public class BankAccount {
 
     // For exercise 2 only
     private String str;
-    BankAccount(String str) {
+    public BankAccount(String str) {
         this.str = str;
     }
 
