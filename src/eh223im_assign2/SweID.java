@@ -161,6 +161,11 @@ public class SweID {
      * @return checksum value
      */
     private static int getChecksum(String sweID) {
+        int b = (10 - (luhn(sweID) % 10)) % 10;  // (10 - lastdigt) of the sum and get the last digit of the result.
+        return b;
+    }
+
+    private static int luhn(String sweID) {
         int a, b = 0;
         String sweID2=sweID.substring(0,6) + sweID.substring(7,10);
         for (int i = 0; i < sweID2.length(); i++) { // multiplication pattern: 21212-121
@@ -173,8 +178,6 @@ public class SweID {
             }
             b+=a; // Add them to the sum
         }
-        b = (10 - (b % 10)) % 10;  // (10 - lastdigt) of the sum and get the last digit of the result.
-
         return b;
     }
 
@@ -308,9 +311,6 @@ public class SweID {
 
     // Finally
     public static void main(String[] args) {
-        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("19640123-8826"))); // 12 digits with dash
-        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("195504140913"))); // 12 digits without dash
-        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("551314-0913"))); // 10 digit with dash
-        System.out.println(IDVerificationWithInformationToString(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("5504140912"))); // 10 digit without dash
+        System.out.println(luhn(inputHandlingAndConvertingIntoTheCorrectFormToFurtherProcessingIDCorrectly("660310-9288")));
     }
 }
